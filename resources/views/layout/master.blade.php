@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>@yield('title')</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- CSRF Token -->
+  <meta name="_token" content="{{ csrf_token() }}">
+  
+  <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+  <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+
+  <!-- plugin css -->
+  <link href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/plugins/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
+  <!-- Data Table  -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  <!-- end plugin css -->
+
+  @stack('plugin-styles')
+
+  <!-- common css -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+  <!-- end common css -->
+  @yield('style_script')
+  @stack('style')
+</head>
+<body data-base-url="{{url('/')}}" style="font-family: fangsong;">
+
+  <script src="{{ asset('assets/js/spinner.js') }}"></script>
+
+  <div class="main-wrapper" id="app">
+    @include('layout.sidebar')
+    <div class="page-wrapper">
+      @include('layout.header')
+      <div class="page-content">
+        @yield('content')
+      </div>
+      @include('layout.footer')
+    </div>
+  </div>
+
+    <!-- base js -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('assets/plugins/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <!-- JS Form -->
+
+    <!-- End Js Form -->
+    <!-- end base js -->
+
+    <!-- plugin js -->
+    @stack('plugin-scripts')
+    <!-- end plugin js -->
+
+    <!-- common js -->
+    <script src="{{ asset('assets/js/template.js') }}"></script>
+    <!-- end common js -->
+
+    @stack('custom-scripts')
+
+    @yield('js_script')
+
+</body>
+</html>
